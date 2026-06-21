@@ -145,9 +145,14 @@ async function main() {
         currentsong.currentTime = (currentsong.duration * percentage) / 100
     })
     document.querySelector("#next").addEventListener("click", () => {
-    let currentTrack = decodeURIComponent(currentsong.src.split("/").pop());
 
-    let index = songs.indexOf(currentTrack);
+    let currentSong = decodeURIComponent(
+        currentsong.src.split("/").pop()
+    );
+
+    let index = songs.indexOf(currentSong);
+
+    console.log(index);
 
     if (index < songs.length - 1) {
         playmusic(songs[index + 1]);
@@ -155,9 +160,14 @@ async function main() {
 });
 
 document.querySelector("#previous").addEventListener("click", () => {
-    let currentTrack = decodeURIComponent(currentsong.src.split("/").pop());
 
-    let index = songs.indexOf(currentTrack);
+    let currentSong = decodeURIComponent(
+        currentsong.src.split("/").pop()
+    );
+
+    let index = songs.indexOf(currentSong);
+
+    console.log(index);
 
     if (index > 0) {
         playmusic(songs[index - 1]);
@@ -165,9 +175,12 @@ document.querySelector("#previous").addEventListener("click", () => {
 });
 
 currentsong.addEventListener("ended", () => {
-    let currentTrack = decodeURIComponent(currentsong.src.split("/").pop());
 
-    let index = songs.indexOf(currentTrack);
+    let currentSong = decodeURIComponent(
+        currentsong.src.split("/").pop()
+    );
+
+    let index = songs.indexOf(currentSong);
 
     if (index < songs.length - 1) {
         playmusic(songs[index + 1]);
