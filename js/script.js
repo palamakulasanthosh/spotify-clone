@@ -108,9 +108,7 @@ async function displayalbums() {
     Array.from(document.getElementsByClassName("card")).forEach(card => {
     card.addEventListener("click", async () => {
 
-        console.log("Clicked:", card.dataset.folder);
-
-        let songs = await getsongs(`songs/${card.dataset.folder}`);
+        songs = await getsongs(`songs/${card.dataset.folder}`);
         console.log("Songs loaded:", songs);
 
         playmusic(songs[0]);
@@ -146,6 +144,29 @@ async function main() {
         document.querySelector(".circle").style.left = percentage + "%"
         currentsong.currentTime = (currentsong.duration * percentage) / 100
     })
+    document.querySelector("#next").addEventListener("click", () => {
+    let index = songs.indexOf(currentsong.src.split("/").pop());
+
+    if (index + 1 < songs.length) {
+        playmusic(songs[index + 1]);
+    }
+});
+
+document.querySelector("#previous").addEventListener("click", () => {
+    let index = songs.indexOf(currentsong.src.split("/").pop());
+
+    if (index - 1 >= 0) {
+        playmusic(songs[index - 1]);
+    }
+});
+
+currentsong.addEventListener("ended", () => {
+    let index = songs.indexOf(currentsong.src.split("/").pop());
+
+    if (index + 1 < songs.length) {
+        playmusic(songs[index + 1]);
+    }
+});
 
 
     document.querySelector(".hamburger").addEventListener("click", () => {
