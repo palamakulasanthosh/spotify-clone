@@ -18,7 +18,7 @@ function secondsToMinutesSeconds(seconds) {
 async function getsongs(folder) {
     curfolder = folder;
 
-    let response = await fetch(`${folder}/info.json`);
+    let response = await fetch(`./${folder}/info.json`);
     let data = await response.json();
 
     songs = data.songs;
@@ -53,7 +53,7 @@ async function getsongs(folder) {
 }
 const playmusic = (track, pause = false) => {
     // let audio = new Audio("/songs/"+track)
-    currentsong.src = `${curfolder}/${track}`
+    currentsong.src = `./${curfolder}/${track}`
 
     if (!pause) {
         currentsong.play()
