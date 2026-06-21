@@ -1,4 +1,10 @@
 {
-    "title":"aashiqui 2",
-    "description":"aashiqui 2 movie songs"
+  "title": "Aashiqui 2",
+  "description": "Aashiqui 2 movie songs",
+  "songs": [
+    "Chahun Main Ya Naa - Aashiqui 2.mp3",
+    "Milne Hai Mujhse Aayi - Aashiqui 2.mp3",
+    "Sunn Raha Hai (Male) - Aashiqui 2.mp3",
+    "Tum Hi Ho - Aashiqui 2.mp3"
+  ]
 }
