@@ -1,4 +1,9 @@
 {
-    "title":"Devara",
-    "description":"Devara movie songs"
+  "title": "Devara",
+  "description": "Devara movie songs",
+  "songs": [
+    "04 - Daavudi.mp3",
+    "05 - Red Sea.mp3",
+    "devara.mp3"
+  ]
 }
