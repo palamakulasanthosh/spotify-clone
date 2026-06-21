@@ -1,4 +1,9 @@
 {
-    "title":"Devotonal songs",
-    "description":"Devotonal songs"
+  "title": "Devotional songs",
+  "description": "Devotional songs",
+  "songs": [
+    "Achyutam Keshavam Krishna Damodaram.mp3",
+    "Hanuman Chalisa.mp3",
+    "Krishna Trance.mp3"
+  ]
 }
