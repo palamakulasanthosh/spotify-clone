@@ -52,15 +52,17 @@ async function getsongs(folder) {
     return songs;
 }
 const playmusic = (track, pause = false) => {
-    // let audio = new Audio("/songs/"+track)
-    currentsong.src = `./${curfolder}/${track}`
+    currentsong.src = `./${curfolder}/${track}`;
+
+    let playBtn = document.querySelector("#play");
 
     if (!pause) {
-        currentsong.play()
-        play.src = "img/pause.svg"
+        currentsong.play();
+        playBtn.src = "img/pause.svg";
     }
-    document.querySelector(".songinfo").innerHTML = decodeURI(track)
-    document.querySelector(".songtime").innerHTML = "00:00/00:00"
+
+    document.querySelector(".songinfo").innerHTML = decodeURI(track);
+    document.querySelector(".songtime").innerHTML = "00:00/00:00";
 }
 
 async function displayalbums() {
@@ -109,6 +111,7 @@ async function displayalbums() {
         console.log("Clicked:", card.dataset.folder);
 
         let songs = await getsongs(`songs/${card.dataset.folder}`);
+        console.log("Songs loaded:", songs);
 
         playmusic(songs[0]);
     });
