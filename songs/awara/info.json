@@ -1,4 +1,11 @@
 {
-    "title":"awara",
-    "description":"awara movie songs"
+  "title": "Awara",
+  "description": "Awara movie songs",
+  "songs": [
+    "1-Chiru Chiru Chiru-SenSongsMp3.Co.mp3",
+    "2-Mandaara Poovalle-SenSongsMp3.Co.mp3",
+    "3-Arere Vaanaa-SenSongsMp3.Co.mp3",
+    "4-Chuttesai Chuttesai-SenSongsMp3.Co.mp3",
+    "5-Nee Yadalo Naaku-SenSongsMp3.Co.mp3"
+  ]
 }
