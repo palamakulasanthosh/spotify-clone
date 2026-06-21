@@ -103,6 +103,16 @@ async function displayalbums() {
     }
 
     console.log("Cards created:", document.querySelectorAll(".card").length);
+    Array.from(document.getElementsByClassName("card")).forEach(card => {
+    card.addEventListener("click", async () => {
+
+        console.log("Clicked:", card.dataset.folder);
+
+        let songs = await getsongs(`songs/${card.dataset.folder}`);
+
+        playmusic(songs[0]);
+    });
+});
 }
 async function main() {
     let songs = await getsongs("songs/favourite")
