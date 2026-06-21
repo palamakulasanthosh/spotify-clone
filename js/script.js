@@ -17,7 +17,7 @@ function secondsToMinutesSeconds(seconds) {
 }
 async function getsongs(folder) {
     curfolder = folder
-    let a = await fetch(`http://127.0.0.1:5500/${folder}/`)
+    let a = await fetch(`/${folder}/`)
     let response = await a.text();
     console.log(response)
     let div = document.createElement('div')
@@ -69,7 +69,7 @@ const playmusic = (track, pause = false) => {
 }
 
 async function displayalbums(params) {
-    let a = await fetch(`http://127.0.0.1:5500/songs/`)
+    let a = await fetch(`/songs/`)
     let response = await a.text();
     console.log(response)
     let div = document.createElement('div')
@@ -130,7 +130,7 @@ async function displayalbums(params) {
 
 }
 async function main() {
-    let songs = await getsongs("songs/fav")
+    let songs = await getsongs("songs/favourite")
     playmusic(songs[0], true)
     displayalbums()
 
