@@ -69,7 +69,7 @@ async function displayalbums() {
     cardcontainer.innerHTML = "";
 
     let folders = [
-        "asshiq",
+        "aashiq",
         "awara",
         "devara",
         "devotinal",
