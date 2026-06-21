@@ -1,4 +1,13 @@
 {
-    "title":"favourite songs",
-    "description":"favourite movie songs"
+  "title": "favourite songs",
+  "description": "favourite movie songs",
+  "songs": [
+    "02 - Samayama.mp3",
+    "10 - Chedhu Nijam.mp3",
+    "11 - Needhe Needhe.mp3",
+    "Eppudu.mp3",
+    "Inka Edo-SenSongsMp3.Co.mp3",
+    "Ullaasam.mp3",
+    "marco.mp3"
+  ]
 }
