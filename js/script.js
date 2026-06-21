@@ -63,71 +63,51 @@ const playmusic = (track, pause = false) => {
     document.querySelector(".songtime").innerHTML = "00:00/00:00"
 }
 
-async function displayalbums(params) {
-    let a = await fetch(`/songs/`)
-    let response = await a.text();
-    console.log(response)
-    let div = document.createElement('div')
-    div.innerHTML = response
-    let anchor = div.getElementsByTagName("a")
-    let cardcontainer = document.querySelector(".cardcontainer")
-    let array = Array.from(anchor)
-    for (let index = 0; index < array.length; index++) {
-        const e = array[index];
-        if (e.href.includes("songs/")) {
-            let folder = e.href.split("/").splice(-1)[0]
-            let a = await fetch(`songs/${folder}/info.json`)
-            let response = await a.json();
-            console.log(response)
-            cardcontainer.innerHTML = cardcontainer.innerHTML + `<div data-folder="${folder}" class="card">
-                        <div class="play">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="38">
-                                <circle cx="12" cy="12" r="10" fill="#1db954" />
-                                <polygon points="10,8 16,12 10,16" fill="black" />
-                            </svg>
-                        </div>
-                        <img src="songs/${folder}/cover.jpg">
-                        <h2>${response.title}</h2>
-                        <p>${response.description}</p>
-                    </div>`
+async function displayalbums() {
+
+    let cardcontainer = document.querySelector(".cardcontainer");
+    cardcontainer.innerHTML = "";
+
+    let folders = [
+        "asshiq",
+        "awara",
+        "devara",
+        "devotinal",
+        "favourite",
+        "padi padi leche manasu"
+    ];
+
+    for (const folder of folders) {
+        try {
+            console.log("Loading:", folder);
+
+            let response = await fetch(`songs/${folder}/info.json`);
+
+            if (!response.ok) {
+                console.error(`Failed: ${folder}`, response.status);
+                continue;
+            }
+
+            let data = await response.json();
+
+            cardcontainer.innerHTML += `
+            <div data-folder="${folder}" class="card">
+                <img src="songs/${folder}/cover.jpg">
+                <h2>${data.title}</h2>
+                <p>${data.description}</p>
+            </div>`;
+        }
+        catch (err) {
+            console.error(folder, err);
         }
     }
-     // load playlist as card clickeds
-    Array.from(document.getElementsByClassName("card")).forEach(e => {
-        e.addEventListener("click", async item => {
-            console.log(item.currentTarget.dataset)
-            songs = await getsongs(`songs/${item.currentTarget.dataset.folder}`)
-            playmusic(songs[0])
-        })
-    })
-    // next button
-    document.querySelector("#next").addEventListener("click", (e) => {
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0])
-        if ((index + 1) < songs.length) {
-            playmusic(songs[index + 1])
-        }
-    })
 
-    // previous button
-    document.querySelector("#previous").addEventListener("click", () => {
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0])
-        if ((index - 1) >= 0) {
-            playmusic(songs[index - 1])
-        }
-    })
-
-    currentsong.addEventListener('ended', () => {
-        let index = songs.indexOf(currentsong.src.split("/").slice(-1)[0]);
-        if (index + 1 < songs.length) {
-            playmusic(songs[index + 1]);
-        }
-    });
-
+    console.log("Cards created:", document.querySelectorAll(".card").length);
 }
 async function main() {
     let songs = await getsongs("songs/favourite")
     playmusic(songs[0], true)
-    // displayalbums()
+    await displayalbums();
 
     // play button working
     let play = document.querySelector("#play")
