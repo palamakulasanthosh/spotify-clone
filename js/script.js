@@ -116,7 +116,7 @@ async function displayalbums() {
 });
 }
 async function main() {
-    let songs = await getsongs("songs/favourite")
+    songs = await getsongs("songs/favourite")
     playmusic(songs[0], true)
     await displayalbums();
 
